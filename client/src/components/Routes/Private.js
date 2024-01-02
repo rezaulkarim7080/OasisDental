@@ -15,7 +15,7 @@ export default function PrivateRoute() {
       try {
 
         // If not authenticated with Google, perform a server-side check
-        const res = await axios.get("http://localhost:5000/api/user-auth");
+        const res = await axios.get("https://oasis-dental-api.vercel.app/api/user-auth");
         if (res.data.ok) {
           setOk(true);
         } else {

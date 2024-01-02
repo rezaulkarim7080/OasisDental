@@ -22,7 +22,7 @@ const ProductDetails = ({ productId }) => {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/get-product/${params.id}`
+        `https://oasis-dental-api.vercel.app/api/get-product/${params.id}`
       );
       setProduct(data?.product);
       // getSimilarProduct(data?.appointments.service._id, data?.appointments._id);

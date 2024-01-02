@@ -10,7 +10,7 @@ const MyAppointment = () => {
     //getall products
     const getAppointmentController = async () => {
         try {
-            const { data } = await axios.get("http://localhost:5000/api/appointments");
+            const { data } = await axios.get("https://oasis-dental-api.vercel.app/api/appointments");
             setAppointments(data.appointments);
         } catch (error) {
             console.log(error);
