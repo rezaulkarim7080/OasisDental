@@ -265,7 +265,7 @@ export const updateUserController = async (req, res) => {
         );
         res.status(200).send({
             success: true,
-            messsage: "Category Updated Successfully",
+            messsage: "user Updated Successfully",
             user,
         });
     } catch (error) {

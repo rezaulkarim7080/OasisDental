@@ -27,13 +27,11 @@ router.get("/admin-auth", isAuthenticatedUser, isAdmin, (req, res) => {
 
 
 
-
-// /////////////// ADMIN get all user Like catagory
-
 //update user
-router.put("/user/:id", updateUserController);
+// router.put("/user/:id", updateUserController);
 
-
+// //update profile
+router.put("/profile", updateUserController);
 
 /// review
 // createReview

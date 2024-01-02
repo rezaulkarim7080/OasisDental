@@ -10,13 +10,7 @@ import { createProduct, getAllProduct, getSingleProductController, productCountC
 const router = express.Router();
 
 
-
-
-
 router.post("/create-product", createProduct);
-
-
-
 
 //get products
 router.get("/get-product", getAllProduct);
