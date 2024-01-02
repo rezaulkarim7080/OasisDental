@@ -1,7 +1,7 @@
 import express from "express";
 
 import { createAppointment, getAppointmentController, realtedAppointmentController } from "../controllers/appointmentController.js";
-
+import { isAdmin, isAuthenticatedUser } from "../middleware/auth.js";
 
 
 
@@ -10,7 +10,7 @@ import { createAppointment, getAppointmentController, realtedAppointmentControll
 const router = express.Router();
 
 
-router.post("/create-appointment", createAppointment);
+router.post("/create-appointment", isAuthenticatedUser, createAppointment);
 
 // // user orders
 router.get("/appointments", getAppointmentController);
