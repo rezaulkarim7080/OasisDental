@@ -146,6 +146,7 @@ const AddReview = () => {
                         <textarea className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-white" id="message" rows={4} placeholder="Enter any additional information" defaultValue={""} value={message}
                             onChange={(e) => setMessage(e.target.value)} />
                     </div>
+             <p className="py-2 text-lg text-red-600">{error} </p>
                     <div className="flex items-center justify-center mb-4">
                         <button onClick={handleCreate} className="btn btn-ghost" type="submit">
                             Add Review
