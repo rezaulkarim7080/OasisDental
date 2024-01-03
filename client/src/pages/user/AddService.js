@@ -88,7 +88,7 @@ const AddService = () => {
                         <textarea name="textarea" id="text" cols={30} rows={10} className="mb-10 h-40 w-full resize-none rounded-md border border-slate-300 p-5 text-black  font-semibold  bg-slate-100 " placeholder='Add Description' value={description}
                             onChange={(e) => setDescription(e.target.value)} />
                     </div>
-
+                     <p className="py-2 text-lg text-red-600">{error} </p>
                     <div className="flex items-center justify-center mb-4 py-3">
                         <button onClick={handleCreate} className="btn btn-ghost" type="submit">
                             Add Service
