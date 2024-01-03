@@ -20,6 +20,8 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,21 +31,31 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://oasis-dental-api.vercel.app/api/login", {
-        email,
-        password,
-      });
-      if (res && res.data.success) {
-        toast.success(res.data && res.data.message);
-        setAuth({
-          ...auth,
-          user: res.data.user,
-          token: res.data.token,
+      if (!email && !password) {
+        setError("Fill All Details");
+      } else if (!email) {
+        setError("please Enter your email");
+      } else if (!password) {
+        setError("please Enter your password");
+      } else if (password.length < 5)
+        setError("password need minimum 5 character");
+      else {
+        const res = await axios.post("https://oasis-dental-api.vercel.app/api/login", {
+          email,
+          password,
         });
-        localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(location.state || "/");
-      } else {
-        toast.error(res.data.message);
+        if (res && res.data.success) {
+          toast.success(res.data && res.data.message);
+          setAuth({
+            ...auth,
+            user: res.data.user,
+            token: res.data.token,
+          });
+          localStorage.setItem("auth", JSON.stringify(res.data));
+          navigate(location.state || "/");
+        } else {
+          toast.error(res.data.message);
+        }
       }
     } catch (error) {
       console.log(error);
@@ -120,6 +132,7 @@ const Login = () => {
                   )}
                 </div>
               </div>
+              <p className="py-2 text-lg text-red-600">{error} </p>
               <div className="py-5">
                 <button
                   type="submit"

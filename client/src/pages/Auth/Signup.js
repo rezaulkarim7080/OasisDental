@@ -18,26 +18,40 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userImage, setUserImage] = useState("");
-
+  const [error, setError] = useState("");
 
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://oasis-dental-api.vercel.app/api/register", {
-        name,
-        email,
-        password,
-        userImage,
+      if (!name && !email && !userImage && !password) {
+        setError("Fill All Details");
+      } else if (!name) {
+        setError("please Enter your Name");
+      } else if (!email) {
+        setError("please Enter your email");
+      } else if (!userImage) {
+        setError("please Enter your userImage");
+      } else if (!password) {
+        setError("please Enter your password");
+      } else if (password.length < 5)
+        setError("password need minimum 5 character");
+      else {
+        const res = await axios.post("https://oasis-dental-api.vercel.app/api/register", {
+          name,
+          email,
+          password,
+          userImage,
 
-      });
-      // await logIn(email, password);// firebase
-      if (res && res.data.success) {
-        toast.success("registation success full");
-        navigate("/login");
-      } else {
-        toast.error(res.data.message);
+        });
+        // await logIn(email, password);// firebase
+        if (res && res.data.success) {
+          toast.success("registation success full");
+          navigate("/login");
+        } else {
+          toast.error(res.data.message);
+        }
       }
     } catch (error) {
       console.log(error);
@@ -139,6 +153,7 @@ const Signup = () => {
                   className="w-full px-3 py-2 border rounded-md text-black bg-slate-50"
                 />
               </div>
+              <p className="py-3 text-xl text-red-600">{error} </p>
               <div className=" py-5">
 
                 <button
