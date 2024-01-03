@@ -61,9 +61,6 @@ function App() {
 
           <Route path='/blog' element={<Blog />} />
           <Route path="/product/:id" element={<ProductDetails />} />
-
-
-
         </Routes>
 
       </BrowserRouter>

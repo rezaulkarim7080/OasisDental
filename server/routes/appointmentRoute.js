@@ -1,7 +1,7 @@
 import express from "express";
 
 import { createAppointment, getAppointmentController, realtedAppointmentController } from "../controllers/appointmentController.js";
-import { isAdmin, isAuthenticatedUser } from "../middleware/auth.js";
+import { isAuthenticatedUser } from "../middleware/auth.js";
 
 
 

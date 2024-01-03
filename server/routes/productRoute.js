@@ -1,7 +1,5 @@
 import express from "express";
 
-import { isAdmin, isAuthenticatedUser, } from "../middleware/auth.js";
-
 import { createProduct, getAllProduct, getSingleProductController, productCountController, productListController } from "../controllers/ProductController.js";
 
 

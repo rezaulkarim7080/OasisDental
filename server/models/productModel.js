@@ -1,21 +1,6 @@
 import mongoose from "mongoose";
 
 
-const commentSchema = new mongoose.Schema({
-    text: {
-        type: String,
-        required: true,
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: false,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-});
 
 const productSchema = new mongoose.Schema({
 
@@ -35,8 +20,6 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-
-    comments: [commentSchema],
     createdAt: {
         type: Date,
         default: Date.now

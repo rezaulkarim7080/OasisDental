@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GithubAuthProvider, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebase";
 
 const userAuthContext = createContext();
@@ -22,14 +22,7 @@ export function UserAuthContextProvider({ children }) { // Fixed 'childern' to '
         const GithubAuthProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, GithubAuthProvider);
     }
-    function facebookSignIn() {
-        const facebookAuthProvider = new FacebookAuthProvider();
-        return signInWithPopup(auth, facebookAuthProvider);
-    }
-    function GithubSignIn() {
-        const githubAuthProvider = new GithubAuthProvider();
-        return signInWithPopup(auth, githubAuthProvider);
-    }
+
 
 
 
@@ -42,7 +35,7 @@ export function UserAuthContextProvider({ children }) { // Fixed 'childern' to '
         }
     }, []);
 
-    return <userAuthContext.Provider value={{ user, signUp, logIn, logOut, googleSignIn, facebookSignIn, GithubSignIn }}>{children}</userAuthContext.Provider> // Fixed 'childern' to 'children'
+    return <userAuthContext.Provider value={{ user, signUp, logIn, logOut, googleSignIn, }}>{children}</userAuthContext.Provider> // Fixed 'childern' to 'children'
 
 }
 

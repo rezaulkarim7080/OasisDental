@@ -1,6 +1,6 @@
 import express from "express";
-import { isAdmin, isAuthenticatedUser } from "../middleware/auth.js";
-import { createReview, forgotPassword, getReviewController, googleSignIn, loginUser, registerUser, updateUserController, } from "../controllers/userController.js";
+import { isAuthenticatedUser } from "../middleware/auth.js";
+import { createReview, forgotPassword, getReviewController, googleSignIn, loginUser, registerUser, updateProfileController, } from "../controllers/userController.js";
 
 
 
@@ -10,6 +10,7 @@ const router = express.Router();
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/google", googleSignIn);
+
 //Forgot Password || POST
 router.post("/forgot-password", forgotPassword);
 
@@ -20,18 +21,9 @@ router.get("/user-auth", isAuthenticatedUser, (req, res) => {
     res.status(200).send({ ok: true });
 });
 
-// //protected Admin route auth
-router.get("/admin-auth", isAuthenticatedUser, isAdmin, (req, res) => {
-    res.status(200).send({ ok: true });
-});
-
-
-
-//update user
-// router.put("/user/:id", updateUserController);
 
 // //update profile
-router.put("/profile", updateUserController);
+router.put("/profile", isAuthenticatedUser, updateProfileController);
 
 /// review
 // createReview

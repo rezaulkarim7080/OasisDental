@@ -207,20 +207,20 @@ export const forgotPassword = async (req, res) => {
 };
 
 
-
 //update prfole
 
 export const updateProfileController = async (req, res) => {
     try {
-        const { name, userImage, address } = req.body;
+        const { name, userImage, email, address } = req.body;
         const user = await User.findById(req.user._id);
 
         const updatedUser = await User.findByIdAndUpdate(
             req.user._id,
             {
                 name: name || user.name,
-                address: address || user.address,
+                email: email || user.email,
                 userImage: userImage || user.userImage,
+                address: address || user.address,
 
 
             },
@@ -240,44 +240,6 @@ export const updateProfileController = async (req, res) => {
         });
     }
 };
-
-
-
-
-//////////////// Like catagory
-
-// updateUserController
-// UserControlller
-// singleUserController
-// deleteUserCOntroller
-
-//update category
-
-
-export const updateUserController = async (req, res) => {
-    try {
-        const { name, email, userImage } = req.body;
-        const { id } = req.params;
-        const user = await User.findByIdAndUpdate(
-            id,
-            { name, email, userImage },
-            { new: true }
-        );
-        res.status(200).send({
-            success: true,
-            messsage: "user Updated Successfully",
-            user,
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({
-            success: false,
-            error,
-            message: "Error while updating category",
-        });
-    }
-};
-
 
 
 

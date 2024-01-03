@@ -19,8 +19,8 @@ const Profile = () => {
   useEffect(() => {
     const { name, address, userImage } = auth.user;
     setName(name);
-    setAddress(address);
     setUserImage(userImage);
+    setAddress(address);
 
 
   }, [auth?.user]);
@@ -29,7 +29,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`https://oasis-dental-api.vercel.app/api/profile`, {
+      const { data } = await axios.put("http://localhost:5000/api/profile", {
         name,
         address,
         userImage
@@ -59,7 +59,8 @@ const Profile = () => {
       <div className="p-10">
         <div className=" ">
           <div className=" mt-[10px] flex flex-col justify-center items-center">
-            <img src={auth.user.userImage} alt="" className="rounded-full w-[150px] h-[150px]" />
+
+            <img src={auth.user.userImage} alt={auth.user.name} className="rounded-full w-[150px] h-[150px]" />
             {/* profile form  */}
             <div className="w-full max-w-md m-auto my-6 rounded-md ">
               <div>
@@ -81,8 +82,6 @@ const Profile = () => {
                       name="name"
                       id="name"
                       value={name}
-                      required
-                      autoFocus
                       onChange={(e) => setName(e.target.value)}
                       className="w-full px-3 py-2 border bg-slate-50 rounded-md text-black"
                     />
@@ -106,7 +105,7 @@ const Profile = () => {
                       placeholder="enter address"
                       name="address"
                       value={address}
-                      id="email"
+                      id="address"
                       onChange={(e) => setAddress(e.target.value)}
                       className="w-full px-3 py-2 border bg-slate-50 rounded-md text-black"
                     />
@@ -114,7 +113,7 @@ const Profile = () => {
 
                   <button
                     type="submit"
-                    value="Register"
+
                     className="w-full px-8 py-3  font-semibold  btn text-white hover:shadow-2xl"
                   >
                     Update
