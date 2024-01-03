@@ -31,7 +31,7 @@ const MakeAppointmentForm = () => {
     const getAllProducts = async () => {
         try {
 
-            const { data } = await axios.get("http://localhost:5000/api/get-product");
+            const { data } = await axios.get("https://oasis-dental-api.vercel.app/api/get-product");
             setProducts(data.products);
         } catch (error) {
             console.log(error);
@@ -66,7 +66,7 @@ const MakeAppointmentForm = () => {
                 setError("please Enter your message");
             }
             else {
-                const res = await axios.post("http://localhost:5000/api/create-appointment", {
+                const res = await axios.post("https://oasis-dental-api.vercel.app/api/create-appointment", {
                     service,
                     name,
                     email,

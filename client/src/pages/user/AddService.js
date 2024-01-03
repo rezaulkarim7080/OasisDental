@@ -35,7 +35,7 @@ const AddService = () => {
             } else if (!photo) {
                 setError("please Enter your photo");
             }
-            const res = await axios.post("http://localhost:5000/api/create-product", {
+            const res = await axios.post("https://oasis-dental-api.vercel.app/api/create-product", {
                 name,
                 description,
                 price,
