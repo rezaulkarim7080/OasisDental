@@ -39,28 +39,25 @@ function App() {
 
 
 
+          <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Signup />} />
           <Route path='/forgot-password' element={<ForgotPasssword />} />
-
-          {/* //user  */}
-
-          <Route element={<PrivateRoute />}>
-
-          </Route>
-          <Route path='/' element={<Home />} />
-          <Route path='/add-services' element={<AddService />} />
-          <Route path='/user/profile' element={<Profile />} />
-          <Route path='/user/profileGoogle' element={<ProfileGoogle />} />
-          <Route path='/add-review' element={<AddReview />} />
           <Route path='/all-service' element={<AllServices />} />
-
-          <Route path='/my-reviews' element={<MyReviews />} />
-          <Route path='/make-appointment' element={<MakeAppointmentForm />} />
-          <Route path='/my-appointment' element={<MyAppointment />} />
-
           <Route path='/blog' element={<Blog />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          {/* //user  */}
+          <Route element={<PrivateRoute />}>
+            <Route path='/add-services' element={<AddService />} />
+            <Route path='/user/profile' element={<Profile />} />
+            <Route path='/user/profileGoogle' element={<ProfileGoogle />} />
+            <Route path='/add-review' element={<AddReview />} />
+            <Route path='/make-appointment' element={<MakeAppointmentForm />} />
+            <Route path='/my-reviews' element={<MyReviews />} />
+            <Route path='/my-appointment' element={<MyAppointment />} />
+          </Route>
+
+
         </Routes>
 
       </BrowserRouter>
