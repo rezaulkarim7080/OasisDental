@@ -50,7 +50,7 @@ const AddReview = () => {
                 rating
             });
             if (res && res.data.success) {
-                toast.success("Product Created Successfully");
+                toast.success("review Created Successfully");
                 navigate("/");
             } else {
                 toast.error(res.data.message);

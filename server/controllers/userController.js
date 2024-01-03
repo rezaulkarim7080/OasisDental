@@ -138,7 +138,10 @@ export const googleSignIn = async (req, res) => {
                 message: "Already registered, please login",
             });
         }
-
+        //token
+        const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
+            expiresIn: "7d",
+        });
 
         const generatedPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
 
@@ -149,6 +152,7 @@ export const googleSignIn = async (req, res) => {
             email,
             password: hashedPassword,
             userImage,
+            token,
         }).save();
 
         res.status(201).json({

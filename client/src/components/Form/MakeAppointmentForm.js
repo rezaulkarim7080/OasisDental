@@ -25,7 +25,7 @@ const MakeAppointmentForm = () => {
     const [message, setMessage] = useState("");
 
     const [products, setProducts] = useState([]);
-
+    const [error, setError] = useState("");
 
     //getall products
     const getAllProducts = async () => {
@@ -48,21 +48,40 @@ const MakeAppointmentForm = () => {
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("https://oasis-dental-api.vercel.app/api/create-appointment", {
-                service,
-                name,
-                email,
-                phone,
-                date,
-                time,
-                message,
+            if (!name && !email && !phone && !date && !time && !message) {
+                setError("Fill All Details");
+            } else if (!name) {
+                setError("please Enter your Name");
+            } else if (!email) {
+                setError("please Enter your email");
+            } else if (!phone) {
+                setError("please Enter your phone");
+            } else if (!date) {
+                setError("please Enter your date");
+            }
+            else if (!time) {
+                setError("please Enter your time");
+            }
+            else if (!message) {
+                setError("please Enter your message");
+            }
+            else {
+                const res = await axios.post("https://oasis-dental-api.vercel.app/api/create-appointment", {
+                    service,
+                    name,
+                    email,
+                    phone,
+                    date,
+                    time,
+                    message,
 
-            });
-            if (res && res.data.success) {
-                toast.success("Product Created Successfully");
-                navigate("/");
-            } else {
-                toast.error(res.data.message);
+                });
+                if (res && res.data.success) {
+                    toast.success("Product Created Successfully");
+                    navigate("/");
+                } else {
+                    toast.error(res.data.message);
+                }
             }
         } catch (error) {
             console.log(error);
@@ -128,7 +147,7 @@ const MakeAppointmentForm = () => {
                             <textarea name="textarea" id="text" cols={30} rows={5} className="mt-1 block w-full rounded-md border border-slate-300 bg-slate-100 px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 text-black focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 sm:text-sm" placeholder='Add message' value={message}
                                 onChange={(e) => setMessage(e.target.value)} />
                         </div>
-
+                        <p className="py-3 text-xl text-red-600">{error} </p>
                         <div className="flex items-center justify-center mb-4 py-5">
                             <button onClick={handleCreate} className="btn btn-ghost" type="submit">
                                 Add booking

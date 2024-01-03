@@ -23,12 +23,12 @@ router.get("/user-auth", isAuthenticatedUser, (req, res) => {
 
 
 // //update profile
-router.put("/profile", isAuthenticatedUser, updateProfileController);
+router.put("/profile", updateProfileController);
 
 /// review
 // createReview
 // getReviewController
-router.post("/create-review", isAuthenticatedUser, createReview);
+router.post("/create-review", createReview);
 
 // // user orders
 router.get("/reviews", getReviewController

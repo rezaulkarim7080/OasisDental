@@ -4,7 +4,6 @@ const ReviewSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
     },
     rating: {
         type: Number,

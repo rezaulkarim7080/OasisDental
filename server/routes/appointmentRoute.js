@@ -10,7 +10,7 @@ import { isAuthenticatedUser } from "../middleware/auth.js";
 const router = express.Router();
 
 
-router.post("/create-appointment", isAuthenticatedUser, createAppointment);
+router.post("/create-appointment", createAppointment);
 
 // // user orders
 router.get("/appointments", isAuthenticatedUser, getAppointmentController);
