@@ -20,13 +20,13 @@ const AddReview = () => {
     const [rating, setRating] = useState("");
 
     const [products, setProducts] = useState([]);
-
+    const [error, setError] = useState("");
 
     //getall products
     const getAllProducts = async () => {
         try {
 
-            const { data } = await axios.get("https://oasis-dental-api.vercel.app/api/get-product");
+            const { data } = await axios.get("http://localhost:5000/api/get-product");
             setProducts(data.products);
         } catch (error) {
             console.log(error);
@@ -43,7 +43,18 @@ const AddReview = () => {
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("https://oasis-dental-api.vercel.app/api/create-review", {
+            if (!name && !service && !rating && !message) {
+                setError("Fill All Details");
+            } else if (!name) {
+                setError("please Enter your Name");
+            } else if (!service) {
+                setError("please Enter your service");
+            } else if (!message) {
+                setError("please Enter your message");
+            } else if (!rating) {
+                setError("please Enter your rating");
+            }
+            const res = await axios.post("http://localhost:5000/api/create-review", {
                 service,
                 name,
                 message,
@@ -55,9 +66,10 @@ const AddReview = () => {
             } else {
                 toast.error(res.data.message);
             }
+
         } catch (error) {
             console.log(error);
-            toast.error("Something went wrong");
+            toast.error(error);
         }
 
 

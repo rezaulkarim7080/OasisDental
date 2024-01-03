@@ -16,7 +16,7 @@ export default function PrivateRoute() {
   useEffect(() => {
     const authCheck = async () => {
       try {
-        const res = await axios.get("https://oasis-dental-api.vercel.app/api/user-auth");
+        const res = await axios.get("http://localhost:5000/api/user-auth");
         if (res.data.ok) {
           setOk(true);
         } else {

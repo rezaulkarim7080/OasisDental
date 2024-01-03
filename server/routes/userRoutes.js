@@ -23,7 +23,7 @@ router.get("/user-auth", isAuthenticatedUser, (req, res) => {
 
 
 // //update profile
-router.put("/profile", updateProfileController);
+router.put("/profile", isAuthenticatedUser, updateProfileController);
 
 /// review
 // createReview

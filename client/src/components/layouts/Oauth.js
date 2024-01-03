@@ -30,7 +30,7 @@ const Oauth = () => {
 
             const result = await signInWithPopup(auth, provider);
 
-            const res = await axios.post("https://oasis-dental-api.vercel.app/api/google", {
+            const res = await axios.post("http://localhost:5000/api/google", {
 
                 name: result.user.displayName,
                 email: result.user.email,

@@ -13,7 +13,7 @@ const AddService = () => {
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [photo, setPhoto] = useState("");
-
+    const [error, setError] = useState("");
 
 
     const [auth, setAuth] = useAuth();
@@ -24,7 +24,18 @@ const AddService = () => {
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("https://oasis-dental-api.vercel.app/api/create-product", {
+            if (!name && !description && !price && !photo) {
+                setError("Fill All Details");
+            } else if (!name) {
+                setError("please Enter your Name");
+            } else if (!description) {
+                setError("please Enter your description");
+            } else if (!price) {
+                setError("please Enter your price");
+            } else if (!photo) {
+                setError("please Enter your photo");
+            }
+            const res = await axios.post("http://localhost:5000/api/create-product", {
                 name,
                 description,
                 price,
@@ -38,7 +49,7 @@ const AddService = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error("Something went wrong");
+            toast.error(error);
         }
 
     };

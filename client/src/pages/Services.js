@@ -26,7 +26,7 @@ const Services = () => {
     //getTOtal COunt
     const getTotal = async () => {
         try {
-            const { data } = await axios.get("https://oasis-dental-api.vercel.app/api/product-count");
+            const { data } = await axios.get("http://localhost:5000/api/product-count");
             setTotal(data?.total);
         } catch (error) {
             console.log(error);
@@ -42,7 +42,7 @@ const Services = () => {
     const loadMore = async () => {
         try {
             setLoading(true);
-            const { data } = await axios.get(`https://oasis-dental-api.vercel.app/api/product-list/${page}`);
+            const { data } = await axios.get(`http://localhost:5000/api/product-list/${page}`);
             setLoading(false);
             setProducts([...products, ...data?.products]);
         } catch (error) {
@@ -55,8 +55,8 @@ const Services = () => {
     //getall products
     const getAllProducts = async () => {
         try {
-            const { data } = await axios.get(`https://oasis-dental-api.vercel.app/api/product-list/${page}`);
-            // const { data } = await axios.get("https://oasis-dental-api.vercel.app/api/get-product");
+            const { data } = await axios.get(`http://localhost:5000/api/product-list/${page}`);
+            // const { data } = await axios.get("http://localhost:5000/api/get-product");
             setProducts(data.products);
         } catch (error) {
             console.log(error);
@@ -100,7 +100,7 @@ const Services = () => {
 
     const filterProduct = async () => {
         try {
-            const { data } = await axios.post("https://oasis-dental-api.vercel.app/api/product-filters", {
+            const { data } = await axios.post("http://localhost:5000/api/product-filters", {
                 checked,
                 radio,
             });

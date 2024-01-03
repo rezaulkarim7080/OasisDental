@@ -18,7 +18,7 @@ const ReviewCard = () => {
 
     const getReviewController = async () => {
         try {
-            const { data } = await axios.get("https://oasis-dental-api.vercel.app/api/reviews");
+            const { data } = await axios.get("http://localhost:5000/api/reviews");
             setReviews(data.reviews);
         } catch (error) {
             console.log(error);
