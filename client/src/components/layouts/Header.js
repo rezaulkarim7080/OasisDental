@@ -44,18 +44,21 @@ const Header = () => {
     };
 
 
-
     const handleProfileClick = () => {
-        if (auth.user) {
-            navigate('/user/profile');
-        } else if (user) {
-            navigate('/user/profileGoogle');
-        }
-        else {
-
-            navigate('/login');
-        }
+        const destination = auth.user ? '/user/profile' : user ? '/user/profileGoogle' : '/login';
+        navigate(destination);
     };
+    // const handleProfileClick = () => {
+    //     if (auth.user) {
+    //         navigate('/user/profile');
+    //     } else if (user) {
+    //         navigate('/user/profileGoogle');
+    //     }
+    //     else {
+
+    //         navigate('/login');
+    //     }
+    // };
 
 
 
@@ -76,13 +79,13 @@ const Header = () => {
                             <li className='text-xl font-medium'><Link to={'/blog'}>Blog</Link>
                             </li>
 
+
                             {(auth.user || user) && (
                                 <>
                                     <li className='text-xl font-medium'><Link to={'/add-services'}>Add Service</Link></li>
                                     <li className='text-xl font-medium'><Link to={'/add-review'}>Add Reviews</Link></li>
                                 </>
                             )}
-
                         </ul>
                     </div>
                     <div className='flex justify-center gap-2 items-center'>

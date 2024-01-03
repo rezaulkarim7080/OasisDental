@@ -128,10 +128,10 @@ export const googleSignIn = async (req, res) => {
     try {
         const { name, email, userImage, password } = req.body;
 
-        // Check if user already exists
+
         const existingUser = await User.findOne({ email });
 
-        // If the user already exists, send a response
+
         if (existingUser) {
             return res.status(200).send({
                 success: false,
@@ -139,13 +139,11 @@ export const googleSignIn = async (req, res) => {
             });
         }
 
-        // Generate a random password
+
         const generatedPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
 
-        // Hash the generated password
         const hashedPassword = await hashPassword(generatedPassword);
 
-        // Save the user to the database
         const user = await new User({
             name,
             email,
@@ -158,6 +156,7 @@ export const googleSignIn = async (req, res) => {
             success: true,
             message: "User registered successfully",
             user,
+
         });
     } catch (error) {
         // console.log(error);

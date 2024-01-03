@@ -28,7 +28,7 @@ router.put("/profile", isAuthenticatedUser, updateProfileController);
 /// review
 // createReview
 // getReviewController
-router.post("/create-review", createReview);
+router.post("/create-review", isAuthenticatedUser, createReview);
 
 // // user orders
 router.get("/reviews", getReviewController

@@ -24,11 +24,11 @@ const Spinner = () => {
         style={{ height: "100vh" }}
       >
         <div className="flex justify-center gap-5 py-5">
-          <div class='h-8 w-8 bg-green-700 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
-          <div class='h-8 w-8 bg-green-600 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
-          <div class='h-8 w-8 bg-green-500 rounded-full animate-bounce'></div>
+          <div className='h-8 w-8 bg-green-700 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+          <div className='h-8 w-8 bg-green-600 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+          <div className='h-8 w-8 bg-green-500 rounded-full animate-bounce'></div>
         </div>
-        <h1 className="Text-center text-3xl font-medium">redirecting to you in {count} second </h1>
+        <h1 className="Text-center text-3xl font-medium">Loading.. {count} second </h1>
       </div>
     </>
   );

@@ -13,7 +13,7 @@ const router = express.Router();
 router.post("/create-appointment", isAuthenticatedUser, createAppointment);
 
 // // user orders
-router.get("/appointments", getAppointmentController);
+router.get("/appointments", isAuthenticatedUser, getAppointmentController);
 
 // //similar product
 router.get("/related-appointment/:pid/:cid", realtedAppointmentController);

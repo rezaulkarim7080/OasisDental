@@ -1,7 +1,7 @@
 import express from "express";
 
 import { createProduct, getAllProduct, getSingleProductController, productCountController, productListController } from "../controllers/ProductController.js";
-
+import { isAuthenticatedUser } from "../middleware/auth.js";
 
 
 

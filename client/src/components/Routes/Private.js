@@ -1,9 +1,12 @@
+// Import necessary modules and components
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/auth";
+import { useUserAuth } from "../../context/UserAuthContext";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../Spinner";
-import { useUserAuth } from "../../context/UserAuthContext";
+
+
 
 export default function PrivateRoute() {
   const [ok, setOk] = useState(false);
@@ -13,15 +16,12 @@ export default function PrivateRoute() {
   useEffect(() => {
     const authCheck = async () => {
       try {
-
-        // If not authenticated with Google, perform a server-side check
         const res = await axios.get("https://oasis-dental-api.vercel.app/api/user-auth");
         if (res.data.ok) {
           setOk(true);
         } else {
           setOk(false);
         }
-
       } catch (error) {
         console.error("Error checking authentication:", error);
         setOk(false);
@@ -33,5 +33,6 @@ export default function PrivateRoute() {
     }
   }, [auth?.token]);
 
+  // Render the Outlet if authentication is successful, otherwise show Spinner
   return ok ? <Outlet /> : <Spinner />;
 }

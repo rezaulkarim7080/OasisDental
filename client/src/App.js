@@ -46,20 +46,21 @@ function App() {
           <Route path='/all-service' element={<AllServices />} />
           <Route path='/blog' element={<Blog />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+
+
           {/* //user  */}
+
           <Route element={<PrivateRoute />}>
-            <Route path='/add-services' element={<AddService />} />
             <Route path='/user/profile' element={<Profile />} />
-            <Route path='/user/profileGoogle' element={<ProfileGoogle />} />
-            <Route path='/add-review' element={<AddReview />} />
-            <Route path='/make-appointment' element={<MakeAppointmentForm />} />
-            <Route path='/my-reviews' element={<MyReviews />} />
-            <Route path='/my-appointment' element={<MyAppointment />} />
           </Route>
+          <Route path='/add-services' element={<AddService />} />
+          <Route path='/user/profileGoogle' element={<ProfileGoogle />} />
+          <Route path='/add-review' element={<AddReview />} />
+          <Route path='/make-appointment' element={<MakeAppointmentForm />} />
+
 
 
         </Routes>
-
       </BrowserRouter>
     </div>
 
