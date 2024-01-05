@@ -48,17 +48,6 @@ const Header = () => {
         const destination = auth.user ? '/user/profile' : user ? '/user/profileGoogle' : '/login';
         navigate(destination);
     };
-    // const handleProfileClick = () => {
-    //     if (auth.user) {
-    //         navigate('/user/profile');
-    //     } else if (user) {
-    //         navigate('/user/profileGoogle');
-    //     }
-    //     else {
-
-    //         navigate('/login');
-    //     }
-    // };
 
 
 
@@ -134,8 +123,8 @@ const Header = () => {
                         </div>
 
                     </>) : (<>
-                        <Link to={'/login'} className="btn btn-ghost text-xl">Login</Link>
-                        <Link to={'/register'} className="btn btn-ghost text-xl">Signup</Link>
+                        <Link to={'/login'} className="btn btn-ghost text-xl md:block hidden">Login</Link>
+                        <Link to={'/register'} className="btn btn-ghost text-xl md:block hidden">Signup</Link>
                     </>)
 
                     }
